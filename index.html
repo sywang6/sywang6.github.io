@@ -1,476 +1,606 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="大家好,我是时友,做时间的朋友!">
+<meta property="og:type" content="website">
+<meta property="og:title" content="时间の朋友">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="og:site_name" content="时间の朋友">
+<meta property="og:description" content="大家好,我是时友,做时间的朋友!">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="时间の朋友">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-<meta name="generator" content="Hexo 5.4.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-字符集与编码" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/09/07/%E5%AD%97%E7%AC%A6%E9%9B%86%E4%B8%8E%E7%BC%96%E7%A0%81/" class="article-date">
-  <time class="dt-published" datetime="2021-09-07T11:47:50.238Z" itemprop="datePublished">2021-09-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="字符集与编码"><a href="#字符集与编码" class="headerlink" title="字符集与编码"></a>字符集与编码</h1><p>计算机最底层的数据存储和计算都是二进制的只有0(低电平)和1(高电平),那怎么来表示现实世界的各个字符呢,比如阿拉伯数字”0<del>9”,英文字母”a-z,A-Z”,汉字”地球”,首先是不是得把各种字符收集起来,然后给每个字符分配一个编号,这就是字符集,  在把每个字符分配到的编号按一定的规则转换为被计算机识别的二进制,这就是编码.<br><strong>ASCII</strong>（American Standard Code for Information Interchange）<br>最早的一个字符集,一共收录了128个字符,用0\</del>127对这128个字符编号,例如:97~123表示a~z, 详细码表可以从网上查得, ASCII字符的编码规则简单,直接将字符对应的编号换算成二进制就可以了, 因此ASCII字符和ASCII编码可以理解为同一个含义.127对应7位二进制数字,但是现在计算机一般都是以一个字节为最小处理单位的(一位实在是太小了),ASCII字符的编码也是用一个字节表示的,高位全部是0<br><strong>Unicode</strong><br>上文提到的ASCII字符集,只能表示128个字符,对于英语是够了,对应其他语言就不一定够了,比如我们伟大的汉语,想想有多少个汉字吧!有必要新推出一个字符集以表示更多的字符,如是鬼子整出一个字符集说1000表示”の”,棒子整出一个字符集说1000表示”구”,天朝也出了个字符集1000表示”得”,这样同一份数据在不同的语言环境下处理就会有问题,乱套了.得把全世界用到的所有字符都统一编号,这就是Unicode字符集. Unicode字符集的编号范围从0x00 0000~0x10 FFFF,能表示1114112个字符*(实际没有这么多,有一些预留的编号,例如D800–DFFF没有分配任何字符,而是作为UTF-16的代理对)*,反正现在全世界的字符加在一起还没超过这个数. Unicode字符集在设计的时候还是尊重了一下老大哥,0~127表示的字符与ASCII是一样的,这样也保证一个向前兼容的可能性,使得以前的程序还能运行.<br>从<a target="_blank" rel="noopener" href="https://en.wikibooks.org/wiki/Unicode/Character_reference/D000-DFFF">wiki</a> 上可以查询某个Unicode编号对应的字符. 举个例子:</p>
-<table>
-<thead>
-<tr>
-<th>字符</th>
-<th>Unicode编号</th>
-<th>UTF-8编码</th>
-<th>UTF-16编码</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Z</td>
-<td>U+005A</td>
-<td>0x5A</td>
-<td>0x005A</td>
-</tr>
-<tr>
-<td>Ɖ</td>
-<td>U+0189</td>
-<td>0xC689</td>
-<td>0x0189</td>
-</tr>
-<tr>
-<td>雨</td>
-<td>U+96E8</td>
-<td>0xE99BA8</td>
-<td>0x96E8</td>
-</tr>
-<tr>
-<td>𡘊</td>
-<td>U+2160A</td>
-<td>0xF0A1988A</td>
-<td>0xD845DE0A</td>
-</tr>
-</tbody></table>
-<p><strong>UTF-8编码</strong><br>那么怎样将Unicode编号转换成计算识别<br>的二进制呢?一个最朴素的想法就是与ASCII编码的方式一样,直接将Unicode编号转换为二进制, 这样存在两个问题1)太浪费资源了,表示任意一个字符都需要3个字节,最常用的字符毕竟还是少数2)不能与原来的ASCII兼容,ASCII中1个字节表示一个字符,现在3个字节才表示一个字符,这让计算机很为难啊!于是聪明的人类想了一个办法:UTF-8编码,对于常用的字符用比较少的字节去表示,对应不常用的字符用较多的字节表示, 最少一个字节(8个bit位),这也是UTF-8中8的由来,这样还能兼容ASCII编码,最多6个字节才能表示一个字符,具体规则:<br><strong>UTF-8编码模板</strong>                                                                                 <strong>Unicode编号范围</strong><br>1字节 0xxxxxxx                                                                                 U+0 <del>U+7F<br>2字节 110xxxxx 10xxxxxx                                                                 U+80</del>U+7FF<br>3字节 1110xxxx 10xxxxxx 10xxxxxx                                                 U+800<del>U+FFFF<br>4字节 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx                                  U+10000</del>U+10FFFF<br>5字节 111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx                  超过Unicode编码范围,未用到<br>6字节 1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx   超过Unicode编码范围,未用到<br>好了,接下来把上面的Unicode字符转换为UTF-8编码:<br>1.Z的Unicode编号为U+005A,在U+0<del>U+7F范围内,因此只需要一个字节编码,U+005A对应的二进制是1011010,带入UTF-8编码模板得到01011010<br>2.Ɖ的Unicode编号为U+0189,在U+80</del>U+7FFF范围内,因此需要两个字节编码,U+0189对应的二进制是001 10001001(不足11位需要高位补0至11位,与模板中x的个数相同),填入模板得到11000110 10001001<br>3.雨的Unicode编号为U+96E8,在U+87E<del>U+FFFF范围内,因此需要三个字节编码,U+96E8对应的二进制是10010110 11101000,填入模板得到11101001 10011011 10101000<br>4.𡘊Unicode编号为U+2160A,在U+1087E</del>U+10FFFF范围内,因此需要四个字节编码,U+2160A对应的二进制是00010 00010110 00001010(同样需要高位补0至21位),填入模板得到11110000 10100001 10011000 10001010<br><strong>UTF-16编码</strong><br>懂了UTF-8编码,UTF-16编码自然也不在话下,给你一张图,自己体会<br>UTF-16编码模板                                                     Unicode编号范围<br>2字节 xxxxxxxx xxxxxxxx                                        U+0<del>U+FFFF<br>4字节 110110xx xxxxxxxx 110111xx xxxxxxxx        U+1 0000</del>0x10 FFFF<br>聪明的你发现问题了没有? 2字节编码与4字节编码的开头部分可能存在冲突,举个栗子:11011000 0000000 11011100 0000000 ,到底是解析成两个2字节的符号11011000 0000000,11011100 0000000还是解析成一个4字节的符号,是不是都可以啊! 怎样避免这个问题呢? 当然是出来一条规定了,组织就规定了, 在Unicode字符集中D800–DFFF不表示任何字符,专门表示UTF-16编码4字节中的前两个字节和后两个字节, 其中D800–DBFF表示4字节的前两个字节,DC00–DFFF表示4字节中的后两个字节(专业一点的说法叫代理对,高位代理和低位代理).所有上面的栗子肯定会被解析为一个4字节的符号,而不是两个两字节的符号.<br>好了,接下来把上面的Unicode字符转换为UTF-16编码:<br>1.”Z,Ɖ,雨”的UTF-16编码分别为005A,0189,96E8与他们的Unicode编号一致<br>2.”𡘊”的Unicode编号U+2160A在U+1 0000<del>0x10 FFFF之间, U+2160A减U+10000=U+1160A(与UTF-8编码不同的是这里需要减个两字节模板能编码的范围, 因为4字节模板最多能编码2^20 个,unicode的最大编码0x10FFFF减0x10000正好是2^20),转换为二进制并高位补0到 20位0001 0001 0110 0000 1010,代入UTF-16编码模板,得到”𡘊”的UTF-16编码为11011000 01000101 11011110 00001010(D845,DE0A/55365,56842)<br>UTF-16编码带来的混乱?  由于UTF-16是双字节去表示一个字符的,就存在字节顺序的问题,是高字节存在前面呢,还是低字节存在前面,举个栗子:还是Z, 如果是大端存储-高字节在前(BE-big endian)为”0x00 0x5A “,小端存储-低字节在前则为”0x5A 0x00”, 那一个文件或者流到底是大端存储还是小端存储呢?通常由开头的两个字节标识,称为<strong>BOM-Byte Order Mark</strong>,BE -0xFEFF],LE -0xFFFE.另外UTF-8编码的文件或者流不存在字节序的问题,但是在文件或者流的开头也可以加上三字节的BOM,<strong>EF BB BF</strong>表明这是UTF-8编码即UTF-8withBOM,通常这不是一个很好的实践,有点画蛇添足的意思.对于UTF-8建议使用UTF-8withoutBOM,不带BOM的UTF-8<br><strong>UTF-32编码</strong><br>哦,对了,还要顺便提一下UTF-32编码,发现没有UTF-8和UTF-16都是变长的编码,一会长一会短的, 暴力一点, 直接用4个字节表示一个符号,不够的高位补0,看下图:<br>UTF-32编码模板                                                       Unicode编号范围<br>4字节 xxxxxxxx xxxxxxxx  xxxxxxxx xxxxxxxx          0x\</del>0x10 FFFF<br>UTF-32同样存在字节序的问题,需要四字节标识BE-0x0000 FEFF,LE-0xFEFF 0000, 用四个字节标识一个字符实在是太浪费了一点,所以用得不多,UTF-32也有一点好处,就是很方便查找某个位置的字符,因为每个字符长度固定,只需要做位移运算就可以了,而变长编码则必须遍历<br><strong>BASE64编码</strong><br>看下维基百科上的定义: <strong>Base64</strong>（基底64）是一种基于64个可打印字符(a-zA-Z0-9+/)来表示二进制数据的表示方法.</p>
-<table border="1"  style="width:auto;"  >
-<tbody>
-<tr>
-<th scope="row">文本</th>
-<td colspan="8" align="center"><b>M</b></td>
-<td colspan="8" align="center"><b>a</b></td>
-<td colspan="8" align="center"><b>n</b></td>
-</tr>
-<tr>
-<th scope="row">ASCII编码</th>
-<td colspan="8" align="center">77</td>
-<td colspan="8" align="center">97</td>
-<td colspan="8" align="center">110</td>
-</tr>
-<tr>
-<th scope="row">二进制位</th>
-<td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td>
-<td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td>
-<td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td>
-<td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td>
-</tr>
-<tr>
-<th scope="row">索引</th>
-<td colspan="6" align="center">19</td>
-<td colspan="6" align="center">22</td>
-<td colspan="6" align="center">5</td>
-<td colspan="6" align="center">46</td>
-</tr>
-<tr>
-<th scope="row">Base64编码</th>
-<td colspan="6" align="center"><b>T</b></td>
-<td colspan="6" align="center"><b>W</b></td>
-<td colspan="6" align="center"><b>F</b></td>
-<td colspan="6" align="center"><b>u</b></td>
-</tr>
-</tbody>
-</table>
-有补位的情况:
-<table border="1" style="width:auto;" >
-<tbody><tr>
-<th scope="row">文本（1 Byte）</th>
-<td colspan="8" align="center"><b>A</b></td>
-<td colspan="8" align="center"></td>
-<td colspan="8" align="center"></td></tr>
-<tr>
-<th scope="row">二进制位</th>
-<td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td>
-<td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td>
-<td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-<td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-</tr>
-<tr>
-<th scope="row">二进制位（补0）
-</th>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td><b>0</b></td>
-<td><b>0</b></td>
-<td><b>0</b></td>
-<td><b>0</b></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0
-</td></tr>
-<tr>
-<th scope="row">Base64编码
-</th>
-<td colspan="6" align="center"><b>Q</b>
-</td>
-<td colspan="6" align="center"><b>Q</b>
-</td>
-<td colspan="6" align="center">=
-</td>
-<td colspan="6" align="center">=
-</td></tr>
-<tr>
-<th scope="row">文本（2 Byte）
-</th>
-<td colspan="8" align="center"><b>B</b>
-</td>
-<td colspan="8" align="center"><b>C</b>
-</td>
-<td colspan="8" align="center">
-</td></tr>
-<tr>
-<th scope="row">二进制位
-</th>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0
-</td></tr>
-<tr>
-<th scope="row">二进制位（补0）
-</th>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td><b>0</b></td>
-<td><b>0</b></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0
-</td></tr>
-<tr>
-<th scope="row">Base64编码
-</th>
-<td colspan="6" align="center"><b>Q</b>
-</td>
-<td colspan="6" align="center"><b>k</b>
-</td>
-<td colspan="6" align="center"><b>M</b>
-</td>
-<td colspan="6" align="center">=
-</td></tr></tbody></table>
-观察可以发现base64是用4字节的可见字符表示二进制流中3个字节,不够4字节用=号补位,编码之后的长度是原来的4/3.那为什么需要base64编码呢? 因为二进制流中可能有一些特殊的字符,在网络上传输的时候路由器,防护墙等通常由一些安全策略,不会传递特殊字符或者会把特殊字符识别成特定的指令,所有需要将这些特殊的字符转换掉,base64就是其中的一种编码方法.
-URL的base64编码:URL编码器会把标准Base64中的`/`和`+`字符变为形如`%XX`的形式，而这些`%`号在存入数据库时还需要再进行转换，因为SQL中已将`%`号用作通配符,**用于URL的改进Base64**编码，它不在末尾填充`=`号，并将标准Base64中的`+`和`/`分别改成了`-`和`_`
-
-<p>最后的最后,稍微介绍下GB(国标)系列的字符集与编码,主要的字符集按发布时间先后有GB2312,GBK,GB18030-2000,GB18030-2005对应的编码名称也是G2312,GBK,GB18030,GB2312兼容ASCII,GBK兼容GB2312,GB18030又兼容GBK,GB18030-2000一看就知道是2000年发布的,GB18030-2005是2005年发布.为了兼容ASCII,国标系列的编码也是变长的编码,有1字节,2字节,4字节三种情况,ASCII码对应的字符1字节表示,大部分常用汉字用2字节表示,还有一部分汉字和少数民族文字用4字节表示.GB2312收录了6763个汉字以及682个特殊符号,GBK收录了20902个汉字以及984个汉语标点,部首等,而GB18030收录7万多个汉字,也包含了少数民族文字.<br>国标系列的编码规则与ASCII一样,直接将国标字符对应的编号转换成二进制即可:</p>
-<table>
-<thead>
-<tr>
-<th>字符</th>
-<th align="center">国标编号(码位)</th>
-<th>Unicode编号</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Z</td>
-<td align="center">0x5A</td>
-<td>U+005A</td>
-</tr>
-<tr>
-<td>雨</td>
-<td align="center">0xD3EA</td>
-<td>U+96E8</td>
-</tr>
-<tr>
-<td>Ɖ</td>
-<td align="center">0x81309837</td>
-<td>U+0189</td>
-</tr>
-<tr>
-<td>𡘊</td>
-<td align="center">0x9536BE38</td>
-<td>U+2160A</td>
-</tr>
-</tbody></table>
-<p>GB18030字符集与Unicode字符集:一句话,Unicode字符集里有的字符咱GB18030字符集也有,至于Unicode到GB18030的转换嘛基本没有规律可言,得查表,具体的转换规则就不讨论了,从<a target="_blank" rel="noopener" href="http://www.gb688.cn/bzgk/gb/index">国家标准全文公开系统</a>可以查询国标字符编号对应的Unicode字符编号:<a target="_blank" rel="noopener" href="http://www.gb688.cn/bzgk/gb/newGbInfo?hcno=C344D8D120B341A8DD328954A9B27A99">GB 18030-2005</a>.如有需要可以自行了解.</p>
-<p>那么在Java中二进制的流与String又是如何相互转换的呢, 请看<strong>byte[ ]与String的相互转换</strong></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/09/07/%E5%AD%97%E7%AC%A6%E9%9B%86%E4%B8%8E%E7%BC%96%E7%A0%81/" data-id="ckta0g4nb0001vovw1q32b262" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
+<link rel="canonical" href="http://example.com/">
 
 
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
 
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/09/07/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2021-09-07T11:14:52.386Z" itemprop="datePublished">2021-09-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/09/07/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/09/07/hello-world/" data-id="ckta0g4n60000vovw0hvxavlj" data-title="Hello World" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
+  <title>时间の朋友</title>
   
 
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
 
-  
-    
 
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li></ul>
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
+  <div class="site-meta">
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/09/07/%E5%AD%97%E7%AC%A6%E9%9B%86%E4%B8%8E%E7%BC%96%E7%A0%81/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/07/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">时间の朋友</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">技术,投资,生活...</p>
   </div>
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
   </div>
-</footer>
+</div>
 
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于本站</a>
+
+  </li>
+  </ul>
 </nav>
+
+
+
+
+</div>
+    </header>
+
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/08/byte[]%E4%B8%8EString%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/hdImg.jpg">
+      <meta itemprop="name" content="时间の朋友">
+      <meta itemprop="description" content="大家好,我是时友,做时间的朋友!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时间の朋友">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/08/byte%5B%5D%E4%B8%8EString%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/" class="post-title-link" itemprop="url">byte[ ] 与 String 相互转换</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-09-08 17:45:50 / 修改时间：17:50:06" itemprop="dateCreated datePublished" datetime="2021-09-08T17:45:50+08:00">2021-09-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/io/" itemprop="url" rel="index"><span itemprop="name">io</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>基础知识</strong></p>
+<ul>
+<li>byte（字节）基础类型,8位有符号数-128~127,char(字符)也是基础类型,16位无符号数0~65535 </li>
+<li> String类型的值是存放在char[ ]里面,查看String类的注释”A String represents(代表) a string in the UTF-16 format in which supplementary characters(填充字符) are represented by (由) surrogate pairs (代理对)”.可以知道String中char[ ]是UTF-16编码的,<strong>关于字符集与编码规则详情请参考字符集与编码</strong>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/08/byte%5B%5D%E4%B8%8EString%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/07/%E5%AD%97%E7%AC%A6%E9%9B%86%E4%B8%8E%E7%BC%96%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/hdImg.jpg">
+      <meta itemprop="name" content="时间の朋友">
+      <meta itemprop="description" content="大家好,我是时友,做时间的朋友!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时间の朋友">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/07/%E5%AD%97%E7%AC%A6%E9%9B%86%E4%B8%8E%E7%BC%96%E7%A0%81/" class="post-title-link" itemprop="url">字符集与编码</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-07 19:47:50" itemprop="dateCreated datePublished" datetime="2021-09-07T19:47:50+08:00">2021-09-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-08 17:01:13" itemprop="dateModified" datetime="2021-09-08T17:01:13+08:00">2021-09-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/io/" itemprop="url" rel="index"><span itemprop="name">io</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="字符集与编码"><a href="#字符集与编码" class="headerlink" title="字符集与编码"></a>字符集与编码</h1><p>计算机最底层的数据存储和计算都是二进制的只有0(低电平)和1(高电平),那怎么来表示现实世界的各个字符呢,比如阿拉伯数字”0-9”,英文字母”a-z,A-Z”,汉字”地球”,首先是不是得把各种字符收集起来,然后给每个字符分配一个编号,这就是字符集,  在把每个字符分配到的编号按一定的规则转换为被计算机识别的二进制,这就是编码.
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/07/%E5%AD%97%E7%AC%A6%E9%9B%86%E4%B8%8E%E7%BC%96%E7%A0%81/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/07/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/hdImg.jpg">
+      <meta itemprop="name" content="时间の朋友">
+      <meta itemprop="description" content="大家好,我是时友,做时间的朋友!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时间の朋友">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/07/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-07 19:14:52" itemprop="dateCreated datePublished" datetime="2021-09-07T19:14:52+08:00">2021-09-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-08 15:37:25" itemprop="dateModified" datetime="2021-09-08T15:37:25+08:00">2021-09-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/07/hello-world/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="时间の朋友"
+      src="/images/hdImg.jpg">
+  <p class="site-author-name" itemprop="name">时间の朋友</p>
+  <div class="site-description" itemprop="description">大家好,我是时友,做时间的朋友!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/yourname" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+  </div>
+
+
+<!-- recent posts -->
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+        <div class="links-of-blogroll-title recent-posts-title">
+	    <i class="fa fa-history " aria-hidden="true"></i>
+            近期文章
+	</div>
+	<ul class="links-of-blogroll-list recent-posts-list">
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2021/09/08/byte%5B%5D%E4%B8%8EString%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/" title="byte[ ] 与 String 相互转换" target="">
+		    byte[ ] 与 String 相互转换
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2021/09/07/%E5%AD%97%E7%AC%A6%E9%9B%86%E4%B8%8E%E7%BC%96%E7%A0%81/" title="字符集与编码" target="">
+		    字符集与编码
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2021/09/07/hello-world/" title="Hello World" target="">
+		    Hello World
+		    </a>
+		</li>
+	</ul>
+    </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">时间の朋友</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
 
 
 
 
 
-  </div>
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
 </body>
 </html>

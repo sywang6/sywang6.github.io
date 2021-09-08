@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="基础知识  byte（字节）基础类型,8位有符号数-128~127,char(字符)也是基础类型,16位无符号数0~65535   String类型的值是存放在char[ ]里面,查看String类的注释”A String represents(代表) a string in the UTF-16 format in which supplementary characters(填充字符) are">
+<meta property="og:type" content="article">
+<meta property="og:title" content="byte[ ] 与 String 相互转换">
+<meta property="og:url" content="http://example.com/2021/09/08/byte[]%E4%B8%8EString%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/index.html">
+<meta property="og:site_name" content="时间の朋友">
+<meta property="og:description" content="基础知识  byte（字节）基础类型,8位有符号数-128~127,char(字符)也是基础类型,16位无符号数0~65535   String类型的值是存放在char[ ]里面,查看String类的注释”A String represents(代表) a string in the UTF-16 format in which supplementary characters(填充字符) are">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-08T09:45:50.898Z">
+<meta property="article:modified_time" content="2021-09-08T09:50:06.051Z">
+<meta property="article:author" content="时间の朋友">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="io">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/09/08/byte[]%E4%B8%8EString%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>byte[ ] 与 String 相互转换 | 时间の朋友</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">时间の朋友</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">技术,投资,生活...</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于本站</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/08/byte[]%E4%B8%8EString%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/hdImg.jpg">
+      <meta itemprop="name" content="时间の朋友">
+      <meta itemprop="description" content="大家好,我是时友,做时间的朋友!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时间の朋友">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          byte[ ] 与 String 相互转换
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-09-08 17:45:50 / 修改时间：17:50:06" itemprop="dateCreated datePublished" datetime="2021-09-08T17:45:50+08:00">2021-09-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/io/" itemprop="url" rel="index"><span itemprop="name">io</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>基础知识</strong></p>
+<ul>
+<li>byte（字节）基础类型,8位有符号数-128~127,char(字符)也是基础类型,16位无符号数0~65535 </li>
+<li> String类型的值是存放在char[ ]里面,查看String类的注释”A String represents(代表) a string in the UTF-16 format in which supplementary characters(填充字符) are represented by (由) surrogate pairs (代理对)”.可以知道String中char[ ]是UTF-16编码的,<strong>关于字符集与编码规则详情请参考字符集与编码</strong><span id="more"></span></li>
+</ul>
+<p><strong>String转换为byte[ ]</strong><br>String转换为byte[ ],可以使用getBytes(String charsetName)或者getBytes(Charset charset)方法,当然还有getBytes(),但是只有稍微跟踪下代码,就会知道getBytes()使用的是默认的编码,至于默认的编码是从哪来又是另外一个话题.总结一下,String转换为byte[ ]一定要指定字符集/编码.还是以<strong>字符集与编码</strong>这篇文章中的”Z,Ɖ,雨,𡘊”为例.</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>char[ ]/UTF-16</th>
+<th>byte[ ]/UTF-8</th>
+<th>byte[ ]/GB系列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Z</td>
+<td>[0x5A]</td>
+<td>[90]</td>
+<td>[90]</td>
+</tr>
+<tr>
+<td>Ɖ</td>
+<td>[0x0189]</td>
+<td>[-58,-119]</td>
+<td>[ 127, 48 ,-104 ,55]</td>
+</tr>
+<tr>
+<td>雨</td>
+<td>[0x96E8]</td>
+<td>[-23,-101,-88]</td>
+<td>[-45 .-22 ]</td>
+</tr>
+<tr>
+<td>𡘊</td>
+<td>[0xD845,0xDE0A]</td>
+<td>[-16, -95, -104, -118]</td>
+<td>[-107 ,54 ,-66 ,56 ]</td>
+</tr>
+</tbody></table>
+<p><strong>转换为UTF-8编码的byte[ ]:</strong><br>1)Z,比较简单,Z的UTF-8编码为0x5A,没有超过127,最高位是0,对应的十进制有符号数就是90,编码后的数组为[90]<br>2)Ɖ的UTF-8编码为0xC689,由于0x89都超过了127,最高位是1,对应的十进制有符号数(最高位为符号位,剩下的7位按位取反,在加1)分别为-58,-119,编码后的数组为[-58,-119]<br>3)雨的UTF-8编码为0xE99BA8,占三个字节,0xE9,0x9B,0xA8相应的有符号十进制数值为-23,-101,-88.,编码后的数组为[-23,-101,-88]<br>4)𡘊的UTF-8编码为0xF0A1988A,占四个字节,0xF0,0xA1,0x98,0x8A相应的有符号十进制数值为-16, -95, -104, -118,编码后的数组为[-16, -95, -104, -118]<br><strong>转换为UTF-16编码的byte[ ]:</strong><br>1)Z,UTF-16编码,0x005A,转换为byte[ ],大端存储:[0,90],小端存储:[0,90],不指定存储方式:[-2, -1, 0, 90]<br>2)Ɖ,UTF-16编码,0x0189,转换为byte[ ],大端存储:[1,-119],小端存储:[-119,1],不指定存储方式:[-2, -1, 1, -119]<br>3)雨,UTF-16编码,0x96E8,转换为byte[ ],大端存储:[-106,-24],小端存储:[-24,-106],不指定存储方式:[-2, -1, -106, -24]<br>4)𡘊,UTF-16编码,0xD845DE0A,转换为byte[ ],大端存储:[-40, 69, -34, 10],小端存储:[69, -40, 10, -34],不指定存储方式:[-2, -1, -40, 69, -34, 10]<br>可以发现当不指定大端存储还是小端存储的时候,默认使用了大端存储,并添加了两字节的BOM(Byte Order Mark)<br><strong>转换为国标系列编码的byte[ ]:</strong><br>1)Z,国标编码,0x5A,国标系列编码后的数组[90 ]<br>2)Ɖ,国标编码,0x81309837,国标系列编码后的数组[ 127, 48 ,-104 ,55],GB2312和GBK均未收录该字符,实测发现若以GB2312或GBK编码则会返回[63], 对应的字符?,大意就是不知道这表示个啥字符<br>3)雨,国标编码,0xD3EA,国标系列编码后的数组[-45 .-22 ]<br>4)𡘊,国标编码,0x9536BE38,国标系列编码后的数组[-107 ,54 ,-66 ,56 ],GB2312和GBK均未收录该字符,实测发现若以GB2312或GBK编码则会返回[63], 对应的字符?,大意就是不知道这表示个啥字符<br><strong>最后我们在结合BASE64解码看一下:</strong><br>首先要明白一点Base64编解码都是针对字节的操作,编码就是把3个字节变成4个字节,解码就是把4个字节变成3个字节.例如现在接受到一个字符串”WsaJ6Zuo8KGYig==”,    并且告诉你,这个字符串是UTF-8编码的BASE64串,那么原始的(base64编码之前)byte[ ]的值是多少呢?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//base64字符串对应的byte[]</span></span><br><span class="line"><span class="keyword">byte</span>[] rawArr = <span class="string">&quot;WsaJ6Zuo8KGYig==&quot;</span>.getBytes(StandardCharsets.UTF_8)</span><br><span class="line"><span class="comment">//base64解码之后的原始byte[]</span></span><br><span class="line"><span class="keyword">byte</span>[] oriArr = Base64.getDecoder().decode(rawArr);</span><br><span class="line"><span class="comment">//至于原始的byte[]是二进制数据还是文本数据就看服务双方的约定了</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>byte[ ]转换为String</strong><br>byte[ ]转换为String其实就是把byte[ ]值存放到char[ ]的过程, 同样需要知道怎样解析byte[ ]是一次读一个字节呢,还是一次读两个字节, 读取的字节对应的字符又是哪一个, 所以byte[ ]转换为String只能按事先约定好了编码方式进行转换,new String(byte bytes[],Charset charset)必须知道字符集/编码的原因,当然也可以不指定,只是这样就会使用默认的字符集/编码,<br>稍微跟踪一下代码就知道了.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//case1</span></span><br><span class="line"><span class="comment">//String转换为byte[],UTF-8编码</span></span><br><span class="line"><span class="keyword">byte</span>[] rawArr = <span class="string">&quot;ZƉ雨𡘊&quot;</span>.getBytes(StandardCharsets.UTF_8)</span><br><span class="line"><span class="comment">//byte数组[90 ,-58 ,-119 ,-23, -101 ,-88 ,-16, -95 ,-104 ,-118]转换为字符串,UTF-8编码</span></span><br><span class="line">String str= <span class="keyword">new</span> String(rawArr,StandardCharsets.UTF_8));</span><br><span class="line"><span class="comment">//转换后的str:&quot;ZƉ雨𡘊&quot;,符合预期</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//case2</span></span><br><span class="line"><span class="comment">//String转换为byte[],UTF-8编码</span></span><br><span class="line"><span class="keyword">byte</span>[] rawArr = <span class="string">&quot;ZƉ雨𡘊&quot;</span>.getBytes(StandardCharsets.UTF_8)</span><br><span class="line"><span class="comment">//byte数组[90 ,-58 ,-119 ,-23, -101 ,-88 ,-16, -95 ,-104 ,-118]转换为字符串,GB18030编码</span></span><br><span class="line">String str= <span class="keyword">new</span> String(rawArr,<span class="string">&quot;GB18030&quot;</span>);</span><br><span class="line"><span class="comment">//转换后的str:&quot;Z茐闆�&quot;,乱码了,我们来尝试分析一下,转换为无符号16进制数字为[0x5A,0xC6,0x89,0xE9, 0x9B ,0xA8 ,0xF0, 0xA1, 0x98 ,0x8A],首先读一个字节0x5A在0x00-0x7E范围,所以是个单字节字符,查GB18030字符集表知道对应&quot;Z&quot;,在读一个字节[0xC6]是一个双字节字符,[0xC6,0x89]正好GB18030字符集的&quot;茐&quot;,在读取0xE9,也是一个双字节字符,[0xE9, 0x9B]正好GB18030字符集的&quot;茐&quot;,接着读取[0xA8],是一个四字节字符,接着读取[0xF0],在四字节字符中,第二个字节的范围是0x30-0x39超过范围了,所以后面乱码了</span></span><br></pre></td></tr></table></figure>
+
+<p>类比下case2,有一些二进制的数据,例如图片,pdf文档,word文档等,里面出现的某些字节超出字符集编码的范围,或者不符合字符集的规则就不能解析了,比如两字节的UTF-8的两字节模板为110xxxxx 10xxxxxx ,如果出现110xxxxx 11xxxxxx显然不符合规则.所以传输二进制数据的时候,最佳实践是,先将二进制数据的byte[ ]做个base64编码,然后在转换为UTF-8编码或者GB系列编码的字符串,但是最好不要转换成UTF-16编码的字符串,UTF-16一个字符至少占两个字节,所以BASE编码的byte[ ]转换为UTF-16字符串还是会出现一些不常见甚至不可打印的字符.下面是一个完整的例子:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Files;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Paths;</span><br><span class="line"><span class="keyword">import</span> java.util.Base64;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ByteToString2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String filepath = <span class="string">&quot;/home/sywang/phone.png&quot;</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">byte</span>[] bytes = Files.readAllBytes(Paths.get(filepath));</span><br><span class="line">            <span class="comment">// byte[] to base64 string</span></span><br><span class="line">            String s = Base64.getEncoder().encodeToString(bytes);</span><br><span class="line">            System.out.println(s);</span><br><span class="line">            <span class="comment">// base64 string to byte[]</span></span><br><span class="line">            <span class="keyword">byte</span>[] decode = Base64.getDecoder().decode(s);</span><br><span class="line">            Files.write(Paths.get(<span class="string">&quot;/home/sywang/phone2.png&quot;</span>), decode);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过这两篇文章的介绍,是不是理解了字符集与编码,在遇到乱码问题是不是能轻松搞定,小伙伴们还有什么问题,快来和我交流吧!</p>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/io/" rel="tag"># io</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/07/%E5%AD%97%E7%AC%A6%E9%9B%86%E4%B8%8E%E7%BC%96%E7%A0%81/" rel="prev" title="字符集与编码">
+      <i class="fa fa-chevron-left"></i> 字符集与编码
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="时间の朋友"
+      src="/images/hdImg.jpg">
+  <p class="site-author-name" itemprop="name">时间の朋友</p>
+  <div class="site-description" itemprop="description">大家好,我是时友,做时间的朋友!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/yourname" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+  </div>
+
+
+<!-- recent posts -->
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+        <div class="links-of-blogroll-title recent-posts-title">
+	    <i class="fa fa-history " aria-hidden="true"></i>
+            近期文章
+	</div>
+	<ul class="links-of-blogroll-list recent-posts-list">
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2021/09/08/byte%5B%5D%E4%B8%8EString%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/" title="byte[ ] 与 String 相互转换" target="">
+		    byte[ ] 与 String 相互转换
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2021/09/07/%E5%AD%97%E7%AC%A6%E9%9B%86%E4%B8%8E%E7%BC%96%E7%A0%81/" title="字符集与编码" target="">
+		    字符集与编码
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2021/09/07/hello-world/" title="Hello World" target="">
+		    Hello World
+		    </a>
+		</li>
+	</ul>
+    </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">时间の朋友</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
