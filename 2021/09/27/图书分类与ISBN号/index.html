@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next-my.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="图书分类法杜威十进制图书分类法听名字都知道这是一个叫杜威的人搞出来的一个图书分类法,始于1876年,至今仍在不断完善和扩充,最近一次修订是在2011年,规则也比较简单,他把所有的图书分为十大类,每一大类还可以细分为若干小类,小类也可以继续细分下去,那为啥叫十进制分类法呢?因为分类的编号都是由阿拉伯数字组成的.举个完整的例子:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图书分类与ISBN号">
+<meta property="og:url" content="http://example.com/2021/09/27/%E5%9B%BE%E4%B9%A6%E5%88%86%E7%B1%BB%E4%B8%8EISBN%E5%8F%B7/index.html">
+<meta property="og:site_name" content="时间の朋友">
+<meta property="og:description" content="图书分类法杜威十进制图书分类法听名字都知道这是一个叫杜威的人搞出来的一个图书分类法,始于1876年,至今仍在不断完善和扩充,最近一次修订是在2011年,规则也比较简单,他把所有的图书分为十大类,每一大类还可以细分为若干小类,小类也可以继续细分下去,那为啥叫十进制分类法呢?因为分类的编号都是由阿拉伯数字组成的.举个完整的例子:">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/%E7%AC%AC%E4%B8%80%E6%9C%ACdocker%E4%B9%A6%E7%AC%AC2%E7%89%88.jpg">
+<meta property="og:image" content="http://example.com/images/%E7%AC%AC%E4%B8%80%E6%9C%ACdocker%E4%B9%A6.jpg">
+<meta property="article:published_time" content="2021-09-27T03:19:09.878Z">
+<meta property="article:modified_time" content="2021-09-28T03:24:07.613Z">
+<meta property="article:author" content="时间の朋友">
+<meta property="article:tag" content="杂谈">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/%E7%AC%AC%E4%B8%80%E6%9C%ACdocker%E4%B9%A6%E7%AC%AC2%E7%89%88.jpg">
+
+<link rel="canonical" href="http://example.com/2021/09/27/%E5%9B%BE%E4%B9%A6%E5%88%86%E7%B1%BB%E4%B8%8EISBN%E5%8F%B7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>图书分类与ISBN号 | 时间の朋友</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">时间の朋友</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">技术,投资,生活...</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于本站</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/27/%E5%9B%BE%E4%B9%A6%E5%88%86%E7%B1%BB%E4%B8%8EISBN%E5%8F%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/hdImg.jpg">
+      <meta itemprop="name" content="时间の朋友">
+      <meta itemprop="description" content="大家好,我是时友,做时间的朋友!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时间の朋友">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          图书分类与ISBN号
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-27 11:19:09" itemprop="dateCreated datePublished" datetime="2021-09-27T11:19:09+08:00">2021-09-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-28 11:24:07" itemprop="dateModified" datetime="2021-09-28T11:24:07+08:00">2021-09-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E8%B0%88-%E7%99%BE%E7%A7%91/" itemprop="url" rel="index"><span itemprop="name">杂谈&百科</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="图书分类法"><a href="#图书分类法" class="headerlink" title="图书分类法"></a>图书分类法</h1><h2 id="杜威十进制图书分类法"><a href="#杜威十进制图书分类法" class="headerlink" title="杜威十进制图书分类法"></a>杜威十进制图书分类法</h2><p>听名字都知道这是一个叫杜威的人搞出来的一个图书分类法,始于1876年,至今仍在不断完善和扩充,最近一次修订是在2011年,规则也比较简单,他把所有的图书分为十大类,每一大类还可以细分为若干小类,小类也可以继续细分下去,那为啥叫十进制分类法呢?因为分类的编号都是由阿拉伯数字组成的.举个完整的例子:<span id="more"></span><br><em>500 <em>自然科学与数学（总论）</em><br>&emsp;<em>510 数学</em><br>&emsp;&emsp;<em>516 几何</em><br>&emsp;&emsp;&emsp;<em>516.3 分析几何</em><br>&emsp;&emsp;&emsp;&emsp;<em>516.37 度量微分几何</em><br>&emsp;&emsp;&emsp;&emsp;&emsp;516.375 芬斯勒几何</em><br>其实分类的规则不难掌握,关键是分类是否合理(为什么会分成这十大类,每一大类下面应该有哪些小类,是一件比较专业的事情),下面就来看看杜威十进制图书分类法的十大类:<br><em>000 -计算机科学、资讯与总类</em><br><em>100 -哲学与心理学</em><br><em>200 -宗教</em><br><em>300 -社会科学</em><br><em>400 -语言</em><br><em>500 -自然科学</em><br><em>600 -应用科学</em><br><em>700 -艺术与休闲</em><br><em>800 -文学</em><br><em>900 -历史、地理与传记</em><br>杜威十进制图书分类法的影响是比较深远的,后来有很多图书分类法都是在此基础上改造和扩展的,比如通用十进制图书分类法,中文图书分类法,日本十进制分类法,中国科学院图书馆图书分类法等</p>
+<h2 id="美国国会图书馆图书分类法-amp-中图法"><a href="#美国国会图书馆图书分类法-amp-中图法" class="headerlink" title="美国国会图书馆图书分类法&amp;中图法"></a>美国国会图书馆图书分类法&amp;中图法</h2><p>与十进制图书分类法不同的是,美国国会图书馆图书分类法使用26个英文字母中的21个做分类代码,也就是说有21个大类,大类下面在分小类,小类还可以继续细分下去.具体可参考 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BE%8E%E5%9B%BD%E5%9B%BD%E4%BC%9A%E5%9B%BE%E4%B9%A6%E9%A6%86%E5%9B%BE%E4%B9%A6%E5%88%86%E7%B1%BB%E6%B3%95">美国国会图书馆图书分类法</a><br>中国对标<strong>美国国会图书馆图书分类法</strong>的图书分类标准是<a target="_blank" rel="noopener" href="http://clc.nlc.cn/"><strong>中国图书馆分类法</strong></a>,简称中图法或者中国图书分类法,注意与中文图书分类法的区别,中文图书分类法是十进制分类法,所有分类的编号都是十进制的.而中图法与美国国会图书馆图书分类法类似,也是使用26个英文字母做分类代码,然后在向下细分,具体可参考<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%9B%BD%E5%9B%BE%E4%B9%A6%E9%A6%86%E5%88%86%E7%B1%BB%E6%B3%95">wiki.中国图书馆分类法</a>,<a target="_blank" rel="noopener" href="http://dag.seu.edu.cn/page/lwgl/ywjl/zgtsflf.html">中国图书分类法</a>,下面简单罗列一下大类的划分:<br><strong>(A) 马克思列宁主义、毛泽东思想、邓小平理论</strong><br>&emsp;A 马克思列宁主义、毛泽东思想、邓小平理论<br><strong>(B) 哲学、宗教</strong><br>&emsp;B 哲学、宗教<br><strong>(C~K) 社会科学</strong><br>&emsp;C 社会科学总论<br>&emsp;D 政治、法律<br>&emsp;E 军事<br>&emsp;F 经济<br>&emsp;G 文化、科学、教育、体育<br>&emsp;H 语言、文字<br>&emsp;I 文学<br>&emsp;J 艺术<br>&emsp;K 历史、地理<br><strong>(N~X) 自然科学</strong><br>&emsp;N 自然科学总论<br>&emsp;O 数理科学和化学<br>&emsp;P 天文学、地球科学<br>&emsp;Q 生物科学<br>&emsp;R 医药、卫生<br>&emsp;S 农业科学<br>&emsp;T 工业技术<br>&emsp;U 交通运输<br>&emsp;V 航空、航天<br>&emsp;X 环境科学、安全科学<br><strong>(Z) 综合性图书</strong><br>&emsp;Z 综合性图书</p>
+<h1 id="ISBN"><a href="#ISBN" class="headerlink" title="ISBN"></a>ISBN</h1><p>​    国际标准书号(International Standard Book Number 简称ISBN),简单来说图书编号就是一本书的唯一标识,这里说的一本书指作者写的一本书需要与我们买的一本书区别开,当一本书同时有平装本和精装本出版时需要使用不同的ISBN,一本书还可能有多版,比如说第一版,第二版等等,如果下一本的改动比较大可以申请一个新的ISBN,改动不大也可以使用原来的ISBN.<br>​    ISBN分为2个版本,2007年1月1日之前为10位,国家或语言或区位代码-出版社代码-书序号-校验位,2007年1月1日之后统一为13位,在10位的基础上加了三位前导码,并重新计算了校验位,前导码-国家或语言或区位代码-出版社代码-书序号-校验位<br><strong>前导码3位</strong>:通常为978或者979<br><strong>国家或语言或区位代码1~5位</strong>:中国大陆,简体中文的代码是7<br><strong>出版社代码2~5位</strong>:由各国家或地区的国际标准书号分配中心分配给出版社<br><strong>书序号1~6位</strong>:由各出版社分配给每本书<br><strong>校验码1位</strong>:10位的ISBN和13位ISBN校验规则不同<br><strong>10位ISBN的校验规则:</strong><br>1)书号的前9位是7-309-04547<br>2)计算加权和:<strong>7</strong>*10+<strong>3</strong>*9+<strong>0</strong>*8+<strong>9</strong>*7+<strong>0</strong>*6+<strong>4</strong>*5+<strong>5</strong>*4+<strong>4</strong>*3+<strong>7</strong>*2=<strong>226</strong><br>3)校验码位加权和除以11的负余数226 =  21 * 11 - 5.所以本书的校验码为5,如果校验码为10.需转成罗马数字X,完整的ISBN:7-309-04547-5<br><strong>13位ISBN的校验规则:</strong><br>1)书号前12位是978-986-181-728<br>2计算加权和:<strong>9</strong>*1+<strong>7</strong>*3+<strong>8</strong>*1+<strong>9</strong>*3+<strong>8</strong>*1+<strong>6</strong>*3+<strong>1</strong>*1+<strong>8</strong>*3+<strong>1</strong>*1+<strong>7</strong>*3+<strong>2</strong>*1+<strong>8</strong>*3=164<br>3)校验码为加权和除以1的负余数:164=17*10-6,所以本书的校验码为6,完整的ISBN:978-986-181-728-6<br><strong>思考一个问题:</strong><br>最小的书序号只有1位,最多只能出10本书,出版社把书序号都用完了怎么办呢?其实解决办法也很简单,出版社可以向国家或地区的国际标准书号分配中心在申请一个出版社代码,也就是说一个出版社可以有多个出版社代码,我们可以从<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%87%BA%E7%89%88%E7%A4%BE%E5%88%97%E8%A1%A8">中国出版社列表</a>印证这一点,举个例子<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%94%B5%E5%AD%90%E5%B7%A5%E4%B8%9A%E5%87%BA%E7%89%88%E7%A4%BE">电子工业出版社</a>目前就分配了两个出版社编号121和5053.<br>当然13位的编号总归会有个上限的,但是目前这个上限还不容易达到,可以放心申请,当然了申请书号也是需要一点点费用的.</p>
+<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><p>以我正在看的一本书《第一本docker书》第2版为例,这本书的ISBN为:978-7-115-41933-0,978-7为中国大陆地区固定的前缀,115-正是人民邮电出版社,41933是出版社分配给这本书的书序号,我们来计算一下校验位<strong>9</strong>*1+<strong>7</strong>*3+<strong>8</strong>*1+<strong>7</strong>*3+<strong>1</strong>*1+<strong>1</strong>*3+<strong>5</strong>*1+<strong>4</strong>*3+<strong>1</strong>*1+<strong>9</strong>*3+<strong>3</strong>*1+<strong>3</strong>*3=120=12*10-0,校验位为0.在来看下图书分类TP316.89,查询<a target="_blank" rel="noopener" href="http://dag.seu.edu.cn/page/lwgl/ywjl/zgtsflf.html">中国图书分类法</a>,得到该图书分类为:<br>T    工业科学<br>&emsp;TP    自动化技术、计算技术<br>&emsp;&emsp;TP3    计算技术、计算机<br>&emsp;&emsp;&emsp;TP31    计算机软件<br>&emsp;&emsp;&emsp;&emsp;TP316 操作系统<br>&emsp;&emsp;&emsp;&emsp;&emsp;TP316.8 网络操作系统<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;TP316.89 其他<br><img src="/images/%E7%AC%AC%E4%B8%80%E6%9C%ACdocker%E4%B9%A6%E7%AC%AC2%E7%89%88.jpg" alt="第一本docker书第2版"></p>
+<p>其实这本书还有第一版,可以发现第一版的ISBN为978-7-115-37733-3与第二版的的ISBN号不一样,第二版在第一版的基础上增加了一些章节,如果改动不大在版可以使用前一版的ISBN<br><img src="/images/%E7%AC%AC%E4%B8%80%E6%9C%ACdocker%E4%B9%A6.jpg" alt="第一本docker书"></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li>[1] <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9B%BE%E4%B9%A6%E5%88%86%E7%B1%BB%E6%B3%95">wiki.图书分类法</a></li>
+<li>[2] <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9D%9C%E5%A8%81%E5%8D%81%E8%BF%9B%E5%88%B6%E5%9B%BE%E4%B9%A6%E5%88%86%E7%B1%BB%E6%B3%95">wiki.杜威十进制图书分类法</a></li>
+<li>[3] <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9D%9C%E5%A8%81%E5%8D%81%E8%BF%9B%E5%88%B6%E5%9B%BE%E4%B9%A6%E5%88%86%E7%B1%BB%E6%B3%95">wiki.杜威十进制图书分类法</a></li>
+<li>[4] <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BE%8E%E5%9B%BD%E5%9B%BD%E4%BC%9A%E5%9B%BE%E4%B9%A6%E9%A6%86%E5%9B%BE%E4%B9%A6%E5%88%86%E7%B1%BB%E6%B3%95">wiki.美国国会图书馆图书分类法</a></li>
+<li>[5] <a target="_blank" rel="noopener" href="http://clc.nlc.cn/">《中图法》网站</a></li>
+<li>[6] <a target="_blank" rel="noopener" href="http://dag.seu.edu.cn/page/lwgl/ywjl/zgtsflf.html">中国图书分类法.东南大学</a></li>
+<li>[7] <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9B%BD%E9%99%85%E6%A0%87%E5%87%86%E4%B9%A6%E5%8F%B7">wiki.国际标准书号</a></li>
+<li>[8] <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%87%BA%E7%89%88%E7%A4%BE%E5%88%97%E8%A1%A8">wiki.中华人民共和国出版社列表</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%9D%82%E8%B0%88/" rel="tag"># 杂谈</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/08/byte%5B%5D%E4%B8%8EString%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/" rel="prev" title="byte[ ] 与 String 相互转换">
+      <i class="fa fa-chevron-left"></i> byte[ ] 与 String 相互转换
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E4%B9%A6%E5%88%86%E7%B1%BB%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">图书分类法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%9C%E5%A8%81%E5%8D%81%E8%BF%9B%E5%88%B6%E5%9B%BE%E4%B9%A6%E5%88%86%E7%B1%BB%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">杜威十进制图书分类法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BE%8E%E5%9B%BD%E5%9B%BD%E4%BC%9A%E5%9B%BE%E4%B9%A6%E9%A6%86%E5%9B%BE%E4%B9%A6%E5%88%86%E7%B1%BB%E6%B3%95-amp-%E4%B8%AD%E5%9B%BE%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">美国国会图书馆图书分类法&amp;中图法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ISBN"><span class="nav-number">2.</span> <span class="nav-text">ISBN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E6%88%98"><span class="nav-number">3.</span> <span class="nav-text">实战</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="时间の朋友"
+      src="/images/hdImg.jpg">
+  <p class="site-author-name" itemprop="name">时间の朋友</p>
+  <div class="site-description" itemprop="description">大家好,我是时友,做时间的朋友!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sywang6" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sywang6" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangshiyou0101@gmail.com" title="E-Mail → mailto:wangshiyou0101@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+<!-- recent posts -->
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+        <div class="links-of-blogroll-title recent-posts-title">
+	    <i class="fa fa-history " aria-hidden="true"></i>
+            近期文章
+	</div>
+	<ul class="links-of-blogroll-list recent-posts-list">
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2021/09/27/%E5%9B%BE%E4%B9%A6%E5%88%86%E7%B1%BB%E4%B8%8EISBN%E5%8F%B7/" title="图书分类与ISBN号" target="">
+		    图书分类与ISBN号
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2021/09/08/byte%5B%5D%E4%B8%8EString%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/" title="byte[ ] 与 String 相互转换" target="">
+		    byte[ ] 与 String 相互转换
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2021/09/07/%E5%AD%97%E7%AC%A6%E9%9B%86%E4%B8%8E%E7%BC%96%E7%A0%81/" title="字符集与编码" target="">
+		    字符集与编码
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2021/09/07/hello-world/" title="Hello World" target="">
+		    Hello World
+		    </a>
+		</li>
+	</ul>
+    </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">时间の朋友</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
